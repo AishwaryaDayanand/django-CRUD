@@ -1,0 +1,35 @@
+{% extends 'student/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form  method="POST" autocomplete="off" >
+    {% csrf_token %}
+    {{form.name|as_crispy_field}}
+    {{form.usn|as_crispy_field}}
+    
+    <div class="row">
+        <div class="col-md-8">
+            {{form.email|as_crispy_field}}
+
+        </div>
+        <div class="col-md-4">
+            {{form.mobile|as_crispy_field}}
+
+        </div>
+    </div>
+    {{form.level|as_crispy_field}}
+    <div class="row">
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-success btn-block btn-lg">
+             <i class="fas fa-save"></i> 
+               Submit</button>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'list' %} " class="btn btn-info btn-block btn-lg">
+                <i class="fas fa-stream"></i>
+                list of Students
+            </a>
+        </div>
+    </div>
+</form>
+{% endblock %}
